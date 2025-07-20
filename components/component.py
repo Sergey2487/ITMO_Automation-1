@@ -3,8 +3,8 @@ from selenium.webdriver.common.by import By
 
 
 class WebElement:
-    def __init__(self, duiver, locator=''):
-        self.driver = duiver
+    def __init__(self, driver, locator=''):
+        self.driver = driver
         self.locator = locator
 
     def click(self):
@@ -22,3 +22,12 @@ class WebElement:
 
     def get_text(self):
         return str(self.find_element().text)
+
+    def visible(self):
+        try:
+         return self.find_element().is_displayed()
+        except NoSuchElementException:
+            return False
+
+    def not_visible(self):
+        return not self.find_element().is_displayed()
