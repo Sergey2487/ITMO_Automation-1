@@ -10,6 +10,9 @@ class WebElement:
     def click(self):
         self.find_element().click()
 
+    def find_elements(self):
+        return self.driver.find_element(By.CSS_SELECTOR, self.locator)
+
     def find_element(self):
         return self.driver.find_element(By.CSS_SELECTOR, self.locator)
 
@@ -25,7 +28,7 @@ class WebElement:
 
     def visible(self):
         try:
-         return self.find_element().is_displayed()
+            return self.find_element().is_displayed()
         except NoSuchElementException:
             return False
 

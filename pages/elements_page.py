@@ -8,6 +8,5 @@ class ElementsPage(BasePage):
         self.base_url = "https://demoqa.com/elements"
         self.text_please = WebElement(driver, '#app > div > div > div > div.col-12.mt-4.col-md-6')
 
-
     def get_center_text(self):
         return self.find_element("#app > div > div > div > div.col-12.mt-4.col-md-6").text
