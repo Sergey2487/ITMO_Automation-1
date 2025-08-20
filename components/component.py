@@ -1,11 +1,13 @@
 from selenium.common import NoSuchElementException
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 
 
 class WebElement:
-    def __init__(self, driver, locator=''):
+    def __init__(self, driver, locator='',  locator_type='css'):
         self.driver = driver
         self.locator = locator
+        self.locator_type = locator_type
 
     def click(self):
         self.find_element().click()
@@ -67,3 +69,10 @@ class WebElement:
 
     def not_visible(self):
         return not self.find_element().is_displayed()
+
+    def clear(self):
+        self.send_keys(Keys.CONTROL + 'a')
+        self.send_keys(Keys.DELETE)
+
+    def scroll_to_element(self):
+        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);", self.find_element())
